@@ -53,6 +53,28 @@ class Phreak
       navigator.contacts.create options
   }
 
+  picture: {
+    from_library: (success, error = (->), options = {}) ->
+      options["sourceType"] = Camera.PictureSourceType.PHOTOLIBRARY
+      this.snap(success, error, options)
+
+    from_saved: (success, error = (->), options = {}) ->
+      options["sourceType"] = Camera.PictureSourceType.SAVEDPHOTOALBUM
+      this.snap(success, error, options)
+
+    from_library_to_file: (success, error = (->), options = {}) ->
+      options["sourceType"] = Camera.PictureSourceType.PHOTOLIBRARY
+      options["destinationType"] = Camera.DestinationType.FILE_URI
+      this.snap(success, error, options)
+
+    snap_to_file: (success, error = (->), options = {}) ->
+      options["destinationType"] = Camera.DestinationType.FILE_URI
+      this.snap(success, error, options)
+
+    snap: (success, error = (->), options = {}) ->
+      navigator.camera.getPicture(success, error, options)
+  }
+
   file: {
   }
 
