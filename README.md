@@ -1,5 +1,7 @@
 # Phreak
 
+![Phreak](http://gizmovil.com/files/2010/07/phreaking.jpg)
+
 Phreak attemps to git a more friendly API to PhoneGap
 
 ## Example
