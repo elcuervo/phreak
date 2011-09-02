@@ -1,19 +1,3 @@
-# Checklist
-#
-# Accelerometer x
-# Camera
-# Capture
-# Compass
-# Connection x
-# Contacts
-# Device x
-# Events x
-# File
-# Geolocation x
-# Media
-# Notification
-# Storage
-
 class Phreak
   console: {
     log:    (msg) -> console.winConsole.log(msg)
