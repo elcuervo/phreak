@@ -16,8 +16,9 @@
 
 class Phreak
   console: {
-    messages: []
-    log: (msg) -> this.messages.push("[LOG] #{msg}")
+    log:    (msg) -> console.winConsole.log(msg)
+    warn:   (msg) -> console.winConsole.warn(msg)
+    error:  (msg) -> console.winConsole.error(msg)
   }
 
   # Events
@@ -51,6 +52,15 @@ class Phreak
   contact: {
     create: (options) ->
       navigator.contacts.create options
+
+    find: (search, fields, success, error = (->)) ->
+      options = new ContactFindOptions
+      options.filter = search
+      navigator.contacts.find(fields,
+        ((contacts) -> success.apply(contacts)),
+        ((contact_error) -> error.apply(contact_error)),
+        options
+      )
   }
 
   picture: {
@@ -98,8 +108,8 @@ class Phreak
     # Idem to current but returns an id to future clear
     watch: (success, seconds, error = ->) ->
       navigator.geolocation.watchPosition(
-          ((acceleration) -> success.apply(acceleration)),
-          ((acceleration_error) -> error.apply(acceleration_error))
+          ((location) -> success.apply(location)),
+          ((location_error) -> error.apply(location_error))
           {frequency: seconds*1000}
         )
 
@@ -108,7 +118,7 @@ class Phreak
   }
 
   # Accelerometer
-  accelerometer: {
+  acceleration: {
     # Executes success and send an acceleration object as param
     current: (success, error = ->) ->
       navigator.accelerometer.getCurrentAcceleration(
