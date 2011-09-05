@@ -1,3 +1,7 @@
+if module?
+  PhoneTap = new require('../../phonetap/lib/phonetap').PhoneTap
+  navigator = new PhoneTap
+
 class Phreak
   console: {
     log:    (msg) -> console.winConsole.log(msg)
@@ -7,10 +11,10 @@ class Phreak
 
   # Events
   dom_ready: (fun) ->
-    document.addEventListener("DOMContentLoaded", fun)
+    document.addEventListener("DOMContentLoaded", fun) if document?
 
   device_ready: (fun) ->
-    document.addEventListener("deviceready", fun)
+    document.addEventListener("deviceready", fun) if document?
 
   on: {
     back:     (fun) -> document.addEventListener("backbutton", fun)
@@ -74,15 +78,7 @@ class Phreak
 
   # Geolocation
   geolocation: {
-    # Gets the current position and return this with:
-    # this.coords.latitude
-    # this.coords.longitude
-    # this.coords.altitude
-    # this.coords.accuracy
-    # this.coords.altitudeAccuracy
-    # this.coords.heading
-    # this.coords.speed
-    # this.latitude
+    # Gets the current position
     current: (success, error = ->) ->
       navigator.geolocation.getCurrentPosition(
         ((location) -> success.apply(location)),
@@ -123,3 +119,4 @@ class Phreak
   }
 
 @$p = new Phreak
+module.exports = @$p if module?
