@@ -1,6 +1,6 @@
 # Phreak
 
-![Phreak](http://gizmovil.com/files/2010/07/phreaking.jpg)
+![Phreak](http://3.bp.blogspot.com/_vd0HXNLvLlY/TQN_siOjwxI/AAAAAAAAAUI/YeIgSvWm2mw/s1600/pulling-sms-from-used-phones.jpg)
 
 Phreak attemps to git a more friendly API to PhoneGap
 
