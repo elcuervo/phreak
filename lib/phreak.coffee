@@ -1,5 +1,5 @@
 if module?
-  PhoneTap = new require('../../phonetap/lib/phonetap').PhoneTap
+  PhoneTap = new require('phonetap').PhoneTap
   navigator = new PhoneTap
 
 class Phreak
