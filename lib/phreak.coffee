@@ -13,10 +13,10 @@ class Phreak
 
   # Events
   dom_ready: (fun) ->
-    document.addEventListener("DOMContentLoaded", fun) if document?
+    document.addEventListener("DOMContentLoaded", fun)
 
   device_ready: (fun) ->
-    document.addEventListener("deviceready", fun) if document?
+    document.addEventListener("deviceready", fun)
 
   on: {
     back:     (fun) -> document.addEventListener("backbutton", fun)
@@ -71,7 +71,7 @@ class Phreak
       options["destinationType"] = Camera.DestinationType.FILE_URI
       this.snap(success, error, options)
 
-    snap: (success, error, options = quality: 50) ->
+    snap: (success, error = (->), options = quality: 50) ->
       navigator.camera.getPicture(success, error, options)
   }
 
