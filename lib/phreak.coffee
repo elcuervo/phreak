@@ -1,6 +1,8 @@
 if module?
   PhoneTap = new require('phonetap').PhoneTap
   navigator = new PhoneTap
+else
+  navigator = window.navigator
 
 class Phreak
   console: {
@@ -69,7 +71,8 @@ class Phreak
       options["destinationType"] = Camera.DestinationType.FILE_URI
       this.snap(success, error, options)
 
-    snap: (success, error = (->), options = {}) ->
+    snap: (success, error, options = quality: 50) ->
+      camera = new Camera
       navigator.camera.getPicture(success, error, options)
   }
 
