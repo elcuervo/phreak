@@ -72,7 +72,6 @@ class Phreak
       this.snap(success, error, options)
 
     snap: (success, error, options = quality: 50) ->
-      camera = new Camera
       navigator.camera.getPicture(success, error, options)
   }
 
