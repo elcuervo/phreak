@@ -12,6 +12,9 @@ class Phreak
   }
 
   # Events
+  prevent_move: ->
+    document.addEventListener("touchmove", (event) -> event.preventDefault())
+
   dom_ready: (fun) ->
     document.addEventListener("DOMContentLoaded", fun)
 
