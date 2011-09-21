@@ -1,6 +1,5 @@
 if module?
-  PhoneTap = new require('phonetap').PhoneTap
-  navigator = new PhoneTap
+  navigator = require('phonetap').PhoneTap
 else
   navigator = window.navigator
 
